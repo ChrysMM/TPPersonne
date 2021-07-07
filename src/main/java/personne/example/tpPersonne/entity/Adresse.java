@@ -1,4 +1,4 @@
-package personne.example.tpPersonne;
+package personne.example.tpPersonne.entity;
 
 import javax.persistence.*;
 
@@ -15,8 +15,8 @@ public class Adresse {
     private String codePostal;
     private String ville;
 
-    //@ManyToOne(cascade = CascadeType.ALL)
-    //private Personne personne;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Personne personne;
 
     public Adresse() {
     }
