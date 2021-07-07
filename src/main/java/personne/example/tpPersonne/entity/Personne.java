@@ -3,6 +3,8 @@ package personne.example.tpPersonne.entity;
 import personne.example.tpPersonne.entity.Adresse;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="personne")
@@ -17,8 +19,14 @@ import javax.persistence.*;
     private String prenom;
 
     @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id_adresse")
     private Adresse adresse;
 
+    @ManyToMany
+    @JoinTable(name = "personne_activite", joinColumns = @JoinColumn(name="personne_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "activite_id", referencedColumnName = "id"))
+    //@JsonIgnore
+    private Set<Activite> activites = new HashSet<>();
 
     public Personne() {
     }

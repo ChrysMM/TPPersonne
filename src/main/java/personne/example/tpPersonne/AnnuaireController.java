@@ -8,9 +8,9 @@ import personne.example.tpPersonne.entity.Personne;
 
 import java.util.List;
 
-@RestController
+    @RestController
 
-public class AnnuaireController {
+    public class AnnuaireController {
     @Autowired
     PersonneService personneService;
 
@@ -21,6 +21,7 @@ public class AnnuaireController {
 
         return personneService.getPersonnes();
 }
+
     @GetMapping("annuraire/personne/{id}")
     public Personne getPersonne(@PathVariable("id") Long id){
         System.out.println("getPersonne");
@@ -32,7 +33,7 @@ public class AnnuaireController {
         personneService.addPersonne(nouvelPersonne);
     }
 
-        @PostMapping("adresse")
+    @PostMapping("adresse")
     public void createAdresse(@RequestBody Adresse nouvelleAdresse) { personneService.addAdresse(nouvelleAdresse); }
 
 
