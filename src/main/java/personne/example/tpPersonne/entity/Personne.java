@@ -1,24 +1,21 @@
 package personne.example.tpPersonne.entity;
 
-import personne.example.tpPersonne.entity.Adresse;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="personne")
 
-    public class Personne {
-
+public class Personne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    public Long id;
-    private String nom;
+    private Long id;
     private String prenom;
+    private String nom;
+    private int age;
+    private char sexe;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name = "id_adresse")
     private Adresse adresse;
 
@@ -28,16 +25,17 @@ import java.util.Set;
     //@JsonIgnore
     private Set<Activite> activites = new HashSet<>();
 
+    public Personne(String prenom, String nom, int age, char sexe, Adresse adresse, Set<Activite> activites) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.age = age;
+        this.sexe = sexe;
+        this.adresse = adresse;
+        this.activites = activites;
+    }
+
     public Personne() {
     }
-
-    public Personne(Long id, String nom, String prenom, Adresse adresse) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.adresse = adresse;
-    }
-
 
     public Long getId() {
         return id;
@@ -45,14 +43,6 @@ import java.util.Set;
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
     }
 
     public String getPrenom() {
@@ -63,6 +53,30 @@ import java.util.Set;
         this.prenom = prenom;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public char getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(char sexe) {
+        this.sexe = sexe;
+    }
+
     public Adresse getAdresse() {
         return adresse;
     }
@@ -71,17 +85,22 @@ import java.util.Set;
         this.adresse = adresse;
     }
 
+    public Set<Activite> getActivites() {
+        return activites;
+    }
+
+    public void setActivites(Set<Activite> activites) {
+        this.activites = activites;
+    }
+
     @Override
     public String toString() {
         return "Personne{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", adresse=" + adresse +
+                ", nom='" + nom + '\'' +
+                ", age=" + age +
+                ", sexe=" + sexe +
                 '}';
     }
-
-
 }
-
-
