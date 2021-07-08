@@ -8,8 +8,8 @@ import personne.example.tpPersonne.entity.Adresse;
 
 import java.util.List;
 
-@RestController
-public class AdresseController {
+    @RestController
+    public class AdresseController {
     @Autowired
     AdresseService adresseService;
 

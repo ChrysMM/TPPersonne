@@ -10,8 +10,8 @@ import personne.example.tpPersonne.entity.Activite;
 
 import java.util.List;
 
-@RestController
-public class ActiviteController {
+    @RestController
+    public class ActiviteController {
     @Autowired
     ActiviteService activiteService;
 

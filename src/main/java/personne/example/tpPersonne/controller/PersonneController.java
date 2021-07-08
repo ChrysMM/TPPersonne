@@ -8,13 +8,10 @@ import personne.example.tpPersonne.entity.Personne;
 
 import java.util.List;
 
-/**
- * Controller personne
- * @author  ChrystelleMM
- */
 
-@RestController
-public class PersonneController {
+
+    @RestController
+    public class PersonneController {
 
     @Autowired
     PersonneService personneService;

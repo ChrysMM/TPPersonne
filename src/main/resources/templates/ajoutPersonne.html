@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout Personne</title>
+    <style>
+        .navbar {
+
+            list-style: none;
+        }
+        .navbar li {
+           display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div  th:replace="navbar :: navbar_fragment"></div>
+<form th:action="@{/ajoutpersonne}" th:object="${personne}" method="post">
+    <fieldset>
+        <legend>Identité</legend>
+        <div>
+            <label>Prénom:</label>
+            <input type="text" th:field="*{prenom}"/>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" th:field="*{nom}"/>
+        </div>
+        <div>
+            <label>Age:</label>
+            <input type="number" th:field="*{age}"/>
+        </div>
+        <div>
+            <label>Sexe:</label>
+            <input type="text" th:field="*{sexe}"/>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Adresse</legend>
+        <div>
+            <label>Numéro:</label>
+            <input type="text" th:field="${personne.adresse.numero}"/>
+        </div>
+        <div>
+            <label>Rue:</label>
+            <input type="text" th:field="${personne.adresse.rue}"/>
+        </div>
+        <div>
+            <label>Code Postal:</label>
+            <input type="text" th:field="${personne.adresse.codePostal}"/>
+        </div>
+        <div>
+            <label>Ville:</label>
+            <input type="text" th:field="${personne.adresse.ville}"/>
+        </div>
+    </fieldset>
+    <button type="submit">Enregistrer</button>
+
+</form>
+</body>
+</html>

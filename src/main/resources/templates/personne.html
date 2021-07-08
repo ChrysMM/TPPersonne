@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List Personnes</title>
+  <style>
+     .navbar {
+
+            list-style: none;
+        }
+        .navbar li {
+           display: inline-block;
+        }
+        table, td, th {
+            border: 2px solid black;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            padding: 5px;
+            margin-top: 100px;
+
+            background-color: lightblue;
+        }
+        body {
+            color: blue;
+}
+
+        h1 {
+             color: Blue;
+             text-shadow: 2px 2px 5px red;
+             text-align: center;
+}
+  </style>
+</head>
+<body>
+<div  th:replace="navbar :: navbar_fragment"></div>
+<h1>Annuaire Personnes</h1>
+<table>
+  <tr><th>Id</th><th>Prénom</th><th>Nom</th><th>Actions</th></tr>
+  <tr th:each="personne: ${personnes}">
+    <td th:text="${personne.id}" />
+    <td th:text="${personne.prenom}" />
+    <td th:text="${personne.nom}" />
+    <td><a th:href="@{/editpersonne/{id}(id=${personne.id})}">Editer</a></td>
+    <td><a th:href="@{/editpersonne/{id}(id=${personne.id})}">Supprimer</a></td>
+    <!--<td><a th:href="${'/editpersonne/' + personne.id }">Editer</a></td>-->
+  </tr>
+</table>
+</body>
+</html>
